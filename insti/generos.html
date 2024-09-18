@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gustos Musicales</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f3f3f3;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-image: url(img/WhatsApp\ Image\ 2024-09-13\ at\ 5.44.07\ PM.jpeg);
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        header {
+            background-color: #333;
+            padding: 10px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #555;
+            border-radius: 5px;
+            transform: scale(1.1);
+        }
+
+        .content {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+        }
+
+        .genre-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        .genre-item {
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+            border-radius: 10px;
+            transition: transform 0.4s ease;
+        }
+
+        .genre-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .genre-item:hover img {
+            transform: scale(1.2);
+        }
+
+        .genre-item:hover {
+            transform: scale(1.05);
+        }
+
+        .genre-item span {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        /* Responsive menu */
+        @media (max-width: 600px) {
+            nav {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav a {
+                margin: 5px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#">Inicio</a>
+            <a href="#">Rock</a>
+            <a href="#">Banda</a>
+            <a href="#">Electrónica</a>
+            <a href="#">Pop</a>
+            <a href="#">Ska</a>
+            <a href="#">Salsa</a>
+        </nav>
+    </header>
+
+    <div class="content">
+        <h1>¿Qué es la musica?</h1>
+        <p>
+            La música es una de las llamadas Bellas Artes, es decir, a un género artístico, que consiste en conseguir efectos estéticos a través de la manipulación de sonidos vocales o instrumentales, conforme a estándares culturales de ritmo, armonía y melodía.
+            La música es una de las mayores formas de expresión artística desde tiempos ancestrales. Además constituye el sostén de una gigantesca industria global, ya que en la cultura tienen cabida muy distintos tipos de música, empleados con fines recreativos, ceremoniales, publicitarios o de distinta naturaleza.
+
+            Existen muchas y diversas maneras de producir música, algunas muy tradicionales como una orquesta clásica, y otras más contemporáneas como una banda de rock. Sin embargo, el principio que las guía es similar. Cada una pertenece a un contexto específico en cuanto a historia, cultura, valores y consideraciones en torno a lo que es y lo que no es el arte.
+        
+
+        </p>
+
+      
+        </div>
+    </div>
+
+    
+</body>
+</html>

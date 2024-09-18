@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuestionario de Géneros Musicales</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #1e1e2f;
+            color: #f5f5f5;
+        }
+
+        header {
+            background-color: #444;
+            padding: 15px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            max-width: 900px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #ff5722;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 30px;
+            background: #333;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 1.5s forwards;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: #ff5722;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+
+        .question {
+            margin: 20px 0;
+            padding: 20px;
+            background-color: #444;
+            border-radius: 10px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+        }
+
+        p {
+            font-size: 1.5rem;
+            color: #f5f5f5;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: #ddd;
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            background-color: #ff5722;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            background-color: #e64a19;
+        }
+
+        .result {
+            margin-top: 30px;
+            font-size: 1.5rem;
+            color: #ff5722;
+            opacity: 0;
+            animation: fadeIn 1.5s forwards;
+        }
+
+        .retroalimentacion {
+            display: none;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .retroalimentacion button {
+            margin: 5px;
+            padding: 10px 20px;
+            background-color: #ff5722;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .retroalimentacion button:hover {
+            background-color: #e64a19;
+        }
+
+        #image-result {
+            margin-top: 20px;
+        }
+
+        #image-result img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            display: none;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="genero.html">Inicio</a>
+            <a href="rock.html">Rock</a>
+            <a href="banda.html">Banda</a>
+            <a href="electronica.html">Electrónica</a>
+            <a href="pop.html">Pop</a>
+            <a href="ska.html">Ska</a>
+            <a href="salsa.html">Salsa</a>
+            <a href="cuestionario.html">Cuestionario</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>Cuestionario de Géneros Musicales</h1>
+        <form id="quiz-form">
+            <!-- Pregunta 1 -->
+            <div class="question">
+                <p>1. ¿Cuál es una de las bandas más famosas de Rock?</p>
+                <label><input type="radio" name="q1" value="rock"> The Beatles</label>
+                <label><input type="radio" name="q1" value="incorrecta"> Daft Punk</label>
+                <label><input type="radio" name="q1" value="incorrecta"> Banda MS</label>
+            </div>
+
+            <!-- Pregunta 2 -->
+            <div class="question">
+                <p>2. ¿Qué género utiliza principalmente instrumentos de viento?</p>
+                <label><input type="radio" name="q2" value="banda"> Banda</label>
+                <label><input type="radio" name="q2" value="incorrecta"> Electrónica</label>
+                <label><input type="radio" name="q2" value="incorrecta"> Ska</label>
+            </div>
+
+            <!-- Pregunta 3 -->
+            <div class="question">
+                <p>3. ¿Cuál de los siguientes es un famoso DJ de Electrónica?</p>
+                <label><input type="radio" name="q3" value="electronica"> Calvin Harris</label>
+                <label><input type="radio" name="q3" value="incorrecta"> The Rolling Stones</label>
+                <label><input type="radio" name="q3" value="incorrecta"> Banda El Recodo</label>
+            </div>
+
+            <!-- Pregunta 4 -->
+            <div class="question">
+                <p>4. ¿Qué género se caracteriza por el uso de guitarras eléctricas?</p>
+                <label><input type="radio" name="q4" value="rock"> Rock</label>
+                <label><input type="radio" name="q4" value="incorrecta"> Salsa</label>
+                <label><input type="radio" name="q4" value="incorrecta"> Pop</label>
+            </div>
+
+            <!-- Pregunta 5 -->
+            <div class="question">
+                <p>5. ¿Qué género musical originado en Jamaica?</p>
+                <label><input type="radio" name="q5" value="ska"> Ska</label>
+                <label><input type="radio" name="q5" value="incorrecta"> Electrónica</label>
+                <label><input type="radio" name="q5" value="incorrecta"> Banda</label>
+            </div>
+
+            <!-- Pregunta 6 -->
+            <div class="question">
+                <p>6. ¿Qué género es conocido por sus ritmos bailables latinos?</p>
+                <label><input type="radio" name="q6" value="salsa"> Salsa</label>
+                <label><input type="radio" name="q6" value="incorrecta"> Ska</label>
+                <label><input type="radio" name="q6" value="incorrecta"> Rock</label>
+            </div>
+
+            <!-- Pregunta 7 -->
+            <div class="question">
+                <p>7. ¿Qué género musical tiene influencia africana en sus ritmos?</p>
+                <label><input type="radio" name="q7" value="salsa"> Salsa</label>
+                <label><input type="radio" name="q7" value="incorrecta"> Electrónica</label>
+                <label><input type="radio" name="q7" value="incorrecta"> Pop</label>
+            </div>
+
+            <!-- Pregunta 8 -->
+            <div class="question">
+                <p>8. ¿Qué género es famoso por sus letras de protesta y mensaje social?</p>
+                <label><input type="radio" name="q8" value="ska"> Ska</label>
+                <label><input type="radio" name="q8" value="incorrecta"> Pop</label>
+                <label><input type="radio" name="q8" value="incorrecta"> Electrónica</label>
+            </div>
+
+            <!-- Pregunta 9 -->
+            <div class="question">
+                <p>9. ¿Cuál es un subgénero del Rock?</p>
+                <label><input type="radio" name="q9" value="rock"> Punk</label>
+                <label><input type="radio" name="q9" value="incorrecta"> Salsa</label>
+                <label><input type="radio" name="q9" value="incorrecta"> Banda</label>
+            </div>
+
+            <!-- Pregunta 10 -->
+            <div class="question">
+                <p>10. ¿Qué género es conocido por sus sintetizadores electrónicos?</p>
+                <label><input type="radio" name="q10" value="electronica"> Electrónica</label>
+                <label><input type="radio" name="q10" value="incorrecta"> Rock</label>
+                <label><input type="radio" name="q10" value="incorrecta"> Pop</label>
+            </div>
+
+            <!-- Pregunta 11 -->
+            <div class="question">
+                <p>11. ¿Cuál es un artista destacado del género Pop?</p>
+                <label><input type="radio" name="q11" value="pop"> Michael Jackson</label>
+                <label><input type="radio" name="q11" value="incorrecta"> The Beatles</label>
+                <label><input type="radio" name="q11" value="incorrecta"> Daft Punk</label>
+            </div>
+
+            <button type="button" class="btn" onclick="verificarYCalificar()">Enviar Respuestas</button>
+        </form>
+
+        <div id="result" class="result"></div>
+        <div id="image-result" style="text-align: center;"><img id="imagen-aciertos" src=""></div>
+        <div id="retroalimentacion" class="retroalimentacion"></div>
+   
+    </div>
+
+    <script>
+        function verificarYCalificar() {
+            var preguntas = document.querySelectorAll('.question');
+            var completado = true;
+
+            // Verificar que cada pregunta tenga una respuesta seleccionada
+            preguntas.forEach(function(pregunta) {
+                var inputs = pregunta.querySelectorAll('input[type="radio"]');
+                var respondida = Array.from(inputs).some(input => input.checked);
+                if (!respondida) {
+                    completado = false;
+                }
+            });
+
+            if (!completado) {
+                alert("Por favor, responde todas las preguntas antes de enviar.");
+            } else {
+                calificar(); // Si todo está respondido, llama a la función de calificación
+            }
+        }
+
+        function calificar() {
+            var respuestasCorrectas = 0;
+            var respuestas = document.querySelectorAll('input[type="radio"]:checked');
+            var retroalimentacionHTML = '';
+
+            for (var i = 0; i < respuestas.length; i++) {
+                if (respuestas[i].value !== "incorrecta") {
+                    respuestasCorrectas++;
+                } else {
+                    var genero = respuestas[i].name === "q1" ? "rock" :
+                                 respuestas[i].name === "q2" ? "banda" :
+                                 respuestas[i].name === "q3" ? "electronica" :
+                                 respuestas[i].name === "q4" ? "rock" :
+                                 respuestas[i].name === "q5" ? "ska" :
+                                 respuestas[i].name === "q6" ? "salsa" :
+                                 respuestas[i].name === "q7" ? "salsa" :
+                                 respuestas[i].name === "q8" ? "ska" :
+                                 respuestas[i].name === "q9" ? "rock" :
+                                 respuestas[i].name === "q10" ? "electronica" :
+                                 "pop";
+                    retroalimentacionHTML += '<button onclick="location.href=\'' + genero + '.html\'">Retroalimentar genero ' + genero + '</button>';
+                }
+            }
+
+            document.getElementById("result").innerHTML = "Has acertado " + respuestasCorrectas + " de 11 preguntas.";
+            var retroalimentacion = document.getElementById("retroalimentacion");
+            if (retroalimentacionHTML !== "") {
+                retroalimentacion.style.display = "block";
+                retroalimentacion.innerHTML = "<p>Retroalimentación:</p>" + retroalimentacionHTML;
+            } else {
+                retroalimentacion.style.display = "none";
+            }
+
+            var imagen = document.getElementById("imagen-aciertos");
+            if (respuestasCorrectas <= 4) {
+                imagen.src = "https://th.bing.com/th/id/OIP.GF5H__r0r6W9TfGBhi0tzgHaHa?w=194&h=194&c=7&r=0&o=5&pid=1.7";
+                imagen.style.display = "block";
+            } else if (respuestasCorrectas <= 8) {
+                imagen.src = "https://th.bing.com/th/id/OIP.GF5H__r0r6W9TfGBhi0tzgHaHa?w=194&h=194&c=7&r=0&o=5&pid=1.7";
+                imagen.style.display = "block";
+            } else {
+                imagen.src = "https://th.bing.com/th/id/OIP.GF5H__r0r6W9TfGBhi0tzgHaHa?w=194&h=194&c=7&r=0&o=5&pid=1.7";
+                imagen.style.display = "block";
+            }
+        }
+    </script>
+
+</body>
+</html>

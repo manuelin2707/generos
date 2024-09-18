@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gustos Musicales</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #1b1b1b;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Estilos del menú */
+        header {
+            background: linear-gradient(90deg, #ff6b6b, #ff8e53);
+            padding: 15px;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #ff8e53;
+            border-radius: 50px;
+            transform: scale(1.1);
+        }
+
+        /* Estilos del contenido */
+        .content {
+            text-align: center;
+            margin-top: 120px; /* Ajuste para el menú fijo */
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #ff6b6b;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        p {
+            font-size: 1.4rem;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            color: #f7f7f7;
+        }
+
+        /* Estilos del carrusel */
+        .carousel-container {
+            width: 100%;
+            max-width: 1200px;
+            overflow: hidden;
+            position: relative;
+            margin-bottom: 40px;
+            background-color: #333;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            padding: 20px;
+        }
+
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel img {
+            width: 100%;
+            max-width: 300px;
+            height: 200px;
+            margin-right: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transform: scale(0.9);
+            transition: transform 0.5s ease;
+        }
+
+        .carousel img:hover {
+            transform: scale(1.1);
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            color: white;
+            font-size: 1.5rem;
+            transition: background-color 0.3s;
+        }
+
+        .carousel-btn:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .carousel-btn.left {
+            left: 10px;
+        }
+
+        .carousel-btn.right {
+            right: 10px;
+        }
+
+        /* Botones estilizados */
+        button {
+            background-color: #ff6b6b;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #ff8e53;
+        }
+
+        /* Estilos responsive */
+        @media (max-width: 600px) {
+            nav {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav a {
+                margin: 5px 0;
+            }
+
+            .carousel img {
+                width: 100%;
+                max-width: 200px;
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#">Inicio</a>
+            <a href="rock.html">Rock</a>
+            <a href="banda.html">Banda</a>
+            <a href="electronica.html">Electrónica</a>
+            <a href="pop.html">Pop</a>
+            <a href="ska.html">Ska</a>
+            <a href="salsa.html">Salsa</a>
+            <a href="cuestio.html">Cuestionario</a>
+        </nav>
+    </header>
+
+    <div class="content">
+        <h1>¿Qué son los géneros musicales?</h1>
+        <p>
+            Los géneros musicales agrupan diferentes estilos de música basados en características como ritmo, instrumentos y cultura. 
+            Conecta a artistas y oyentes bajo un sonido común que define una experiencia musical.
+        </p>
+
+        <!-- Carrusel de imágenes -->
+        <div class="carousel-container">
+            <button class="carousel-btn left" onclick="moveCarousel(-1)">&#10094;</button>
+            <div class="carousel" id="carousel">
+                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxASEBUSEhAVFhUXFxUYFRgXFxgXFxcVFxcXFxgYFhcYHSggGBolGxgXITEiJSkrLi4uGCAzODMtNygtLisBCgoKDg0OGxAQGi0lICUtLS0tLSstLS0vLS0tLS0vLS0rLS0rLS0tLS0tLS0rLS0tLS0tLS0tLS0rLSstLS0tLf/AABEIAOEA4QMBIgACEQEDEQH/xAAbAAABBQEBAAAAAAAAAAAAAAAAAQMEBQYCB//EAEIQAAEDAgMFBQQIBQMDBQAAAAEAAhEDIQQSMQUGQVFhEyJxgZEyobHBBxQjQnLR4fBSYpKy8YKiwiQzNBUWQ3OD/8QAGQEBAQEBAQEAAAAAAAAAAAAAAAECAwQF/8QALREBAAIBAwIEBAYDAAAAAAAAAAECEQMhMRJBBFFhcSKBwfAFEzIzkaFCsdH/2gAMAwEAAhEDEQA/ANrCIXUJYWVcgLqEoCWECQiEsJYQIlhLCWEHMJYSwlhAkIhdQiECQiEsIQJCFE2ttOlhqfaVXQJgdTyssBjfpVbJbRw5N4DnmB45Rf3qLh6UiF5dsn6QcbFQ1MOKliWZBlLTOh1lscdfFavYe+mGrUO0rEUHNMPY9wsebeJaZ1jgRwUyuJaaEQim4OAIIIIkEXBB0IKVVHMIXUIQcIhdJIQcpIXRCEHCQrohIg5hCVKgISwlhLCqOYSwuoRCBISwgmBKzOK288lwY/KQSIyg8RzEn9RzUm2GorMtPCIWRbt3FAwS2e7YtEyegUlu8Na0sYZE/eHO2vQj05qdUJhpoSwqJu8BHtUh5O+RHzU2jtmk7XM3xg/2kq5hMLCELiliGOs1wJ5Tf01TsKhEJVS737XOFwj6rfbs2n+N2h8hJ8kyRDIb64ivjcUcFRLRTpZTVfqQ8z3fGOA6zyVlu5ulhcOBDA9/F74JnpyUDdENbhM5PtFznvcbuM95zieq0uy8ZScYbVa48g4FcLzMvXSsRC1w+FbwaPQKFtXdjD1x3qcO4ObZw8/lorimABJIAUf/ANZw1wK1MkagOBPuWcLMqHd/EDCubgKmaQHGk8wGvbmJytjQtkCPCFplifpKYTSo1qR77andI1mCY9xHmtLu9tH6xh2VCIcRDxycLH118CutLZ5cNSuN4WCEqFtzcoSohBykXSRBykXRSFByhKhB1CWEsJYVRzCWEsJYQRNpkik4jgJ94XnuFcG4+o13tPuweRJjnH8NjGa916Y9gIIOhEHwK8r3swz6FYPa2S0gHqB7JJNoifUrNmqrupqWm0Xdx6ZpgSTeOMa6KI/aDWnKWRlmOZiYbbWOKjUtpZmAhwk3J0Ga1w4/dA1PG3CwSrsipiZ7NwD2tJbmmHRHddymZngTxWON2sZnCwwJfWpmoPZGnDS1lHdi6eWWVAXZog930Jt8uqXZeKfQwvZ1WOa9ucFsS6STAEa6jRVLNmY19MtZg3lpiCWkOMXkk8NNFK2mZlq1IiIaChtUTkeAHWMGL/511TOL2v2FUVQeBLwDq4OAab82l2ul9bTmtsbKxv2cYWtLGwXZHX5fP1VRSdVq061yXNcxkcRAqOuNQPav/Klq5jLMT2bzGb/VKdNtT7PvAGCCbkA2c0311WT3o36di2saabQ1pLrSJdEcSeE+qz2LxLnU2sjQAT0Fvkq5jC4wFutfOSZ8ob/Zb2u2bTFR+VvfJJMADO655+HMhVdXDYYM7fCVDmY6DDHs7wue9ETF9Vpt3MIx+EpU3gf9tnvEqficJh8OwDQTNzOgLjr4LjM7vVWuzTYei6pgWudJfEnqYWX2btrBsqdm9jmOuQTSdltMycvd0NzC02xt4sG6jSaKg77gGTo5xBMeNircbJoE5sgvc24qYM4jdiPpBd2eBbVZo2tTdbSHS35hMfR5vGx31imTERVH4SMrvTK31Wi3/wAD2uBqUmjXJFtCKjLx0XnmO2G7Z7m1GGZpuaSJMyy830n5K5xHqz09Xs9GG8LTJ4cBGoiZ8FHxO9Aa0m0+Gp4BYHEbR+zBa/748y5s6f6T3jc8erdSpWcII4jiOBlZm18ldOsw9AZtyLOd3vvePEDSB5BSqO1QfvH1XmG0cS99XuOLXMMOjrfvNPlyNypOH2nWb16i3uWM2w3FKvVaWLnipDX9Vgdl7d0krRYXaWaysXnzZnTjyXTq0J2LSqzB1w+plPASVYVagmAulbz3c7acdnSF1CReh5ncJYSwlhUJCWEsIhAkLL7+7L7XDucBcDvamRwMSND8VqlzUphzS0iQQQfAoPCthVHmp2Yk3jjMg6GCA1p71r8CRZeq7t4TJTlw7zrnmBwH75rzzE4Q4TaRpuiHEhpv+IdNB7ui32ysSYF5C4XnfDvSNsrhjoe6OTfXvT7oUqjiA4wdfiqbD4jMM4++ZH4bBvqAD5ro1rPPK/pr8F0ptDFt5XsKLU2bQcSXUaZJMmWgyeZkaqNhdoBvtuAYdHOIEToCT6K0W+WOFRjN28FVMvw1OT94NyunxbBXnm8e4bcLV7ai+KLho4Zix7XB4vxYQ0i+k8V61C4q0g4FpAIPAiQszGzVLYnLyulV7MMINvlNvdCXbmIoPaDUIgTcmAJHL7x6KrfixDqcQaVSpTI/AYb/ALfeCmm0BVIhgLwbE/uy8ttrPdp71a3dTa+zmUgxpAAInMGxmGhME2+ELd0MU06EeRkeIKx+wMDjf/kNLJEQAST43V/Toin7LQ3mAAB7lcmpFex7HVBYucAMzbmw1AA9YVNitkUsRinUnPllOizMxuv2jqkyeEhjesAaLN/SftUGnTwzTJqOzPHHK32R/qeB/SVrNyt2W4GiRmL6j4NRx4xMAdACulaZ3l573mIxCRR3VwLGZBhmZbWOY6aTJvCmu2ZQNjRp/wBDfyU2EkLriHDMsxtHcvDVagqNmmdHZYgjoDofUdFHx25NM3ovIPJ9wfMCR71qq9ZrBLjHxPgFVYjHOfMHKL6a+Z4eSzNatVtbtLy7a2z69LEGiBcQXEEFoB8ONtFqNiEtYJT+0MI0PmODf7QmqQtC80x8T2RPwrLD1jmLgrfAgvdJ0Fz8gqjB0elzotLhqAY0D16ldKVzLjq2xGDiRKheh5jsJYSwiFUJCWEqWECQiEqEGW312fRcKdRxAqEmmydHE94Dx7pjxjisnSxlSBRbOd5DB0mxPkJPkpP0x4h/2NNpgNlxjXMTDTPCMp9VXbh48YqsHPH2tJvfMWdPdDuhN5HNcb1zOXopaIriW1rvDXBoFg0R0I0HwUbZWIz0qjgbEvA8AMo+E+aY3pxHZUnOGsR628lzu3/4kdPmujn2Sq9AVKLWOu3Rw/lIITmA3g7DDsD6b3gMaZaRmgzaDr6qr2bj5GLqT3WveB07NgbbzafVP1qB+rkEaCP9IMAekIYWWz9+sFV41GXjvttzuWkwPFaLDYhlRjXscHNcJa4GQR0XhO2cOWkvYYDtY5rcfRlvLQbh/qtaqGVKZe4F5DWmm5wcO8bTLyI5JEpauBv1sWjSc6uLduW5xwD2SM45E5xP4epWC+vupE38/wA1u/pI2ph6ho0W1ASJqd0gtcDlgAix4FecdsSXNyaTxGaNLwVxvGbPRpzijTbD3yqhwY0hwOguD1WmbtWtXc0EOptNideBNzwsD7lkt2dl0nObWaWn2e7Is4zI6AZSQeNuq9BwzLZC3KeBBDiJB1AOkHyWLV32ai3nyqtmbnGrtJ+KrD7Gn2YpAmTUcGg5j/K0ki+p8L+gAKt2DtJtZhAaQWOLDMQ4t1LYJtPOFMxuLZSZneYEgDmSdAOq9NeHktyehRsZiQwD+I2A+JPRU1bGuqB0uIgTA0AMx4m3FZ+jUc3EUnn2KtJwH47O+CZWKrKjie0rOLjOUEnwEwm8NijBnUX8y53yg+aXZNIuNcc2lo9D+apGV3CqWkfdAPjEE/7Qo3hcYoyGHm3h0JHwhN0Kd13V/wC00g6O9zhP/EqLi9otoszOuTZo4udwH6rhaPidqz8LUbIw/wB8+A+ZVkU3hC002FuhaCPAiU6u9YxDy2nM5coSwhaRIQlQqhISwlQgEQlQg8v+lZl80aZRPlKi/RTgg3D1Kztar4bA1bTt/cX+i0/0ibIdWpjKWiSO87NlEcy0GLJrcuh2OBp0XEFzM0kCBLnudYG/3ovExwWW/JW7/wBX7FvVzB7x+Sm7HcGYWToGk+l1U/SK6KVL/wC1qk4utkwDurD8Ea7M5gK7vqDhMOq1mD+uo3NPvXoPZzRI/lI84XnOzqZfUoU+DJqO5SIAHq6fJejbOq5hCgw7mNFV1OpOU6RFuscVmN5sD2FcSJpvAuOnEHn+q1m81Ps8QD1j3rrbWBp1aTS8FwgSBYwDrPi7hzU4nKzvDE1tnPNE/wAVIGoCNH0zdzh4ATz7pCg0NoVW8Z8RPCLnU2XoFFlMYZj2NDTReQQcxljy1rhEyRxib5eOirzuRT7QhlXKCe4HAu7pu3kdOatbRO0sTExwo9j7y1aDy9lNmY2Mgkag6AjkFeUN4cfi6raYfDny0ZQ1pgy4jNwAAPHRPHcvLmJrsAbqcpsOt1o93NiNwrjcmq8QTlczJSzju8QXF9ME8YPrZxBmV9s2h9XotptdIaIzC2dx9t2pIDnGQJNgwcFmsXXfWxlNjTLRUM3kfZtJcfJxjyVptDFO+t0KLbjvOcOjGxfoHEHyVXVazD1Kr2kZaVGq49HVXBw8yWO9VjPaGo2XGyz2mHrVAZzuqBv4W9wf2k+ahOZ/0NOp96g9pn+UkMf5Brif9Ks9zsORgKTXa9m3N4kSfeVKpYIHC1KZ0e2o0+DgQt4TJjYupPNZfFEfXKgOktPlqfgVe7oYrtcMx/NoPqL/AL6KhqtzYvEdA30h0+5RY5XtRsUnkaBoP9JB/tlYehialXFPLjZhAA4NEkSPHML9PBa7ZuJBGSoYDgWvmDYy10e9UG6+F+1qseACwvbUNuFQif8AbCmI5XMxs9N2IScNSn+BvwU1MbOaRSYP5Rpy4e5PrblPJEqEIJCEqFUCVCVAiEqEDVei17SxwkEQQsTjqVbCVQCM1InuuHEcjJ1Hj8ZW7TGNwrarCx2h9x5iUmFicPKt/K7auHaWmftqcf1ZT4a6Lrb1T/pgzmAEba3fq064pVBLX1GOa9s5XZXAyQSYMCCPio+0gXtEiwsfHksy6Qa2fSyXtLoJ+Q8h8StBsXF9/KSqPZtNzu1ngfhYrnD4gtqT181lpZb8UrB/gkB/6NriHatDYve419VZbcex2FLywutFiRHHh4JrZ+Ma/AFxbAaQ5o6h1iQPNcNbVtWYiK8yQ5dRZicN3YzBtRrhYGHtt4nMBEwqrZ+1u4wvaQWMIHEtIJ7rveJ6K22qeywwbIY57SJPIngNJWcwuzXVW9ncuDWB2aQcpLmyHCxJ01+S40tfqnyzOP53n2y6ac036vJf4LHZnOdBdJAjjn7wNoIMd03jXwV9s3CwM1UtFRzs7iIGYqk2NgLvFOmWlxlznC9rkDL0yj1Tz8CB2lao97yJgTAE6WngrqXvMbenzztGO3OWdTo656eOxzAUmnH1qjrhtMNaer3Fzv7G+qovpArNZhjTaTmxD2/0WAFvL1KsNz6bW0aleo4997yQb6HKOujQqXeqkyriqAmHmozuDgAS/wCXvUreI1ojf6ff9Mcw9D2QIpNHID4J7EHLTIA4FNbPFgFMrsGUgr3sML9G9SKL6R1p1KjfIOMe4hcbNGbG4qLmIA5kNNlYbPwX1fGPIHcqkGeVSIPhIAI6hyrNm9zGYxx4GRz6fEI1BluMDZpgXB7pMzGsGfM35nkr7ZmGp1Q54y56uQPYQZlsy7uzYzJ0USnu/VxbxUjKOLjI00ycz+lwtrszZlOg3KwSeLj7TvH8lIS0wksbAA5AD0SpUhWmCISoQSUqEKoEJUIBCEIBCEIGcTRa5sOaCBcdCOI6rzzarW9oGkkC5EW5kr0XE+w7wPwXm28LbeUrNnTTJsPCxnn7ziR4FV+OwkOMcz8YVnsXEh7BzFj4hG0aVz5qQ13O7JJqYd7JvBjxhQt1JyvoOMyLSSTBAnXley62JVLakTr801i3DDY0O0aTJ81x16TauY7GcSm/X31ZAolwpuDXHUkDWB0WgxO1RTa2oH0jQy/aNeQ0tFgXAkWFzqeQ42zOyNr5a1VhF21HekyDx4EHzCeZvXgW1qxqNHaMpl78tNpcWy0ZczvadLxY9dFNGMUrEeUJMd2vpvolxDHAOiY5hwMEHTr1hZ3bhqMoVMtnkhrZ/iNlL3Z2tgsX/wCK4gMADqcGmGA3b9mD2eoIzNvqE5jGO7QAwQIPOSeSzrzER04zMzXb0icsxzlUuw7Wsp0+AaM2t+viVS1cPn2lSJjuse/TQWaJPPX3LVVKFi4+PifyCz27p7TEV60WkU2+DZJjzcfRapTqvMz/AI7fOd5/jj5ET/bZ4G5CnV2qFs4KdWMr0Cnq0zJBAI4cjefVdbJ2I3t6tZwkPLCAeYaJnz4J9wurPA+z5/kkEn4SJUhVZIVyV0VyUAhCEEtCVCqESoQgEIQgEIQggbar5KR62WB2o8ObE/OPJaffDHBuVl5if8+ix+JqhzCbLnaXbThWbAxOSqW8z+/ktHjePgsSyqW158/gtlWdmE/yyrCyqxXLXgyAZ92n5Kz21hm4nDdowgkA+UXFtb305BZ3HuImVZbr7RkOouJEiBBIMHhPJLx1Rhj1RGECrSqmAajDTcOJfTALTHVuYH8IXWO3EZVqVqmaQ+oxzHNMloc2agLYgAHSeCrNp7uVmu7XCPDwH5+zcQHtIkQCbOsSOB8VZbC3nxDCGBpmYNN7TnZpoBD484WbbTmHXTtGMTGcNRurst+DotY4AVHC4DcrQGyAT1gkuJNyfBWXZQC8un2dNXcPIJytimBoNYt0FjoBF5k34/vWjbtUYig+pSpMDmucAIvYAxYXkH1W4rGYmXntOUXe7bHZ0iBrFvlZO7rYTsqDGnWJd+I3d7ysdUc6viWBxtmzkTIsZEcrxZeg4MACUjS/Kr0+8z7zulJzuvMHZO1QoOGxH+Qn31Z/wjoVzZ8QrDBnu+armuVhg9EhJPrkrpclVkhSFKVyUAhCEExCEKoEIQgEIQgEIXNR+VpdyBPogxW89XPUqDUaen+FjalfukK/r1s7yZB1m+njdUW26YFwbrlL0V2hnHVCahW7wNTNRB5AD0WDY25K1+wak0Y/fFahJQceOMc1X4ek5jw5gMg8gFZ7UdcWH7squldxnn1+S0ytNr4V72/WMOT2lu0YL3/iaOJ5qmob3Yim/K+82IeDMGR5a+9XWzHuY6WnyHwKstobPoYmmTUpaRdsZgZAsfNI3ZnZK2XUw2LDpe45mgwXCIIAc4QJF3Tc8EuytnDDOq0w7MPabMWIs6/hCxe79Srhq9UhhDRpJsGz3QSfK602N3mpFjXiS4tGYsBPtd2QY0BsZ+ULTKNsvZwFSo8Ge/A6NIlo97h5BaWlUhoCodisys6uu7zVvmtqpM5aiE/B1FNJsqnBPv1Vkwc1lT1N5VlgiqymrHCaokphSFKVyqyCuSlKQoEQhCCahCFUCEIQCEJECqu3grZMO88SIHmrBZ7fKsRTY0CZMka6W09UnhY5YUVnSSWxyM/kq7aVab9PgrPEPJsWxz4KlxTpPuXJ6FS7itHu2/7MqgxOgCt93nWjULSJ+OpSCf3Eqrw7mtcS7y/XirrF6OVXsdjavaU3ATMj9CqynYXEMce7Hpf5K3pVwGRzOg8DCy+FDqVQscLcNdFdVqxGUtdHEHqrE4ZmuXNeOxqkxDiBHMgsI92ZV+xagzNGQEMc48u64XA53vCfxNY9kASZlxPUEDT0KbwNHKOt593uV6k6WhrUGg5mxldy4eXD9ElXT4pqjp0UhrJmyzMtRB3Bi4P6K3ptVdh6cX6hWdKyhLttNTMLZNBOUniY9EZTikKGmwQVpkhXKVIUCIQhBNQhCqBCEIBCEIBYffHG/b5eQgcgdbnzK2z3QCTwusBtisTUJc0Om5BHz0HnCzZunKnrPMXVPjGdFavcNLgCYPD1bb3qNiqduC5u7OYjVWu775MfvxVdiaRB/cKx2FSl88tVpleYkS1yzmCqlleRxPgtNjGQ030A/NZeo2KgPhc21VRsezpVWguaCeB0PqotZsGAO7z4ea7wGJ+6Wxb16ymq9YsJMDj+7pkwhVGy+SbDQDSfLiplKmeKh0W538uKu6OHP69FA5RbHuUugwH1XVCjzUyhh+ARHNOlxUkkdEZIP+V20S3VVJdCoRF/ipIDdQFA72h8p/wpGHJmCQLIiyoOloXRTWFPd8z8SnCtMArkpSuSgEIQgmoSJVUCEiJQKhJKSUHNdmZpbMSIlZbaWzqofJYS0cWjN52uFq5RKTGVicPNq2Gl3dJJBLQSbjqDqFBxWDOWQL3mLfAfEFen4nB0qntsB66H1F1R4/dZrrsqEdHCR6jT0Kx0ukXeX1qDrnrxtpfXT1hP7DeG1B15+Hv8lrNobDxNNpHZSDMub3h6ajTWFSYPAtaJ0LnQBzkcZ5KN5ynbQcSwgcfksntB4BAbPUha/H4dzQabeDbxzNtP8LGPwz2vI9oAnx/L3oJeG3nrsbkIaeRIuEtPHvqOBLm+B0VZUw7tYsf5mj/knMCCHf4KDXbNyB2QnLxaRy5eS0mEoty21WWfgXOaC2zhcXvziGkmFo9ik5QDqRwn/kBbyQlLAuIUvPeI/NR/qbs3eMDpf9jyU2hQZYEX4TceXLyRmZMurBwnX3+8fNMsqOAkNjz/AClTaYhxETeDEkjrCSnhKmZwgZDe5gg8bAFVnKHXaYzSbxpxHn+SWicsawfL4W9ynU9mkCC+02AGnST+SfZgaY4T4mfdorhMwXDPFwOh9Z/JPFc06bWiGtAHIAAegSqshclKVyUAhIhBORKREqoWUiRCBUJEIFlIhIgVCRCBnHVctNx6H1Nl5Pi6lSnXOUkCTHEehXoG921WUKTc899x0voP1Cwr8VQqGRVbPImD71jV074i0ROHXR1NPM1mYydZtR053smxBLevQqC7G0r5ifMGPEkKVkA6jpdRMRRZyC4dcxy9PRE8JNPaNC32lM30JA9RKZx9Wg5+Zr2X5PCZw9KkdWjzUr6pQJuxkeAT8z0PyvVaYPaeHFJs1WBw4TJ05C5UjZO2GNOVlOo4SdGEC/IuAEeahYarh6QgGm3zAT//ALiwzPvT+EE/ou1aat/01lwvfSp+q0fyv247EGQ1jGjgXkucOha2B/uTGMwT3th9ep4MPZjyy39SVQVd8RpTonxcY9w/NQa28mJf94N/CPzleivgPEX52+/R47/iXhtPjf2j/rV7m4I0KtVkkteA4SZMtManWzvctYvPtysa52JOd7nEi0kmxsYGmpb6L0BS+jOjPRM5a0/EV169dYwEiCkWHQhSFCQqAKQoK5KBUiSUqCahCFUCRCEAhCEAhCEAUiEIMF9KelD/APT/AIrzXEIQvs+G/Zj77vi+I/ft8v8AUI1HVXL/AGW+CELGt2d9HmUN2qZq6/vokQt6XLGskVv+478TvinGoQu9eIeTU5k8xSGIQujzWW27v/lUfxj4FerIQvk+P/XHt9X2Pwz9uff6QRIhC8L6ZEhQhQcpChCBEIQg/9k=" alt="Rock 1">
+                <img src="https://i.pinimg.com/236x/75/b3/63/75b363e0bd3e210255d73d4a3da7dc4f.jpg" alt="Banda 2">
+                <img src="https://th.bing.com/th/id/OIP.SHfk8yrehdOIoI-Yn2oL6gHaJQ?w=194&h=243&c=7&r=0&o=5&pid=1.7" alt="Electrónica 3">
+                <img src="https://th.bing.com/th/id/OIP.tGlFJ45VurGcX_Hv5J5_CAAAAA?w=194&h=243&c=7&r=0&o=5&pid=1.7" alt="Pop 4">
+                <img src="https://th.bing.com/th/id/OIP.GF5H__r0r6W9TfGBhi0tzgHaHa?w=194&h=194&c=7&r=0&o=5&pid=1.7" alt="Ska 5">
+                <img src="https://th.bing.com/th/id/OIP.MRP2oa81XoCLjkzC0wgHbwHaHa?w=194&h=194&c=7&r=0&o=5&pid=1.7" alt="Salsa 6">
+                <img src="https://th.bing.com/th/id/OIP.lwPSToRcLTyhxxB6RXzg8gAAAA?w=194&h=243&c=7&r=0&o=5&pid=1.7" alt="Rock 7">
+                <img src="https://i.pinimg.com/originals/fc/20/f2/fc20f2193b0989c35c9ea506f47b9fc3.jpg" alt="Banda 8">
+                <img src="https://th.bing.com/th/id/OIP.4j5zIQpmxZtGivXsP-hKEgHaNK?w=187&h=333&c=7&r=0&o=5&pid=1.7" alt="Electrónica 9">
+                <img src="https://th.bing.com/th/id/OIP.QM_bMxwIYQE27t1N-4f2fgHaIU?pid=ImgDet&w=202&h=226&c=7" alt="Pop 10">
+            </div>
+            <button class="carousel-btn right" onclick="moveCarousel(1)">&#10095;</button>
+        </div>
+    </div>
+
+    <script>
+        let currentIndex = 0;
+
+        function moveCarousel(direction) {
+            const carousel = document.getElementById('carousel');
+            const totalItems = carousel.children.length;
+            const itemWidth = carousel.children[0].offsetWidth + 40; // ancho de imagen + espacio
+            currentIndex += direction;
+
+            if (currentIndex < 0) {
+                currentIndex = totalItems - 3; // vuelve al final
+            } else if (currentIndex > totalItems - 3) {
+                currentIndex = 0; // vuelve al inicio
+            }
+
+            carousel.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+        }
+    </script>
+</body>
+</html>
